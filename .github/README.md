@@ -1,11 +1,7 @@
-# ENTSO-E Application Profiles Library
+# ENTSO-E CGMES Application Profiles Library
 
 # Overview
-This library contains all applications profiles for Common Grid Model Exchange Standard/Specification (CMGES) and Network Code Profiles (NCP) organised in a folder structure. The application profiles consist of vocabulary schemas (RDFS) and constraints (SHACL) derived from the information model in UML available on the [ENTSO-E CGMES Library](https://www.entsoe.eu/data/cim/cim-for-grid-models-exchange/#_ENTSO_E_CGMES_Extension_and_Profile).
-
-The folders (and branches) reveal which artifacts were used in which release and version of the CGMES and NCP. In the main branch, the folders are also dived into a current release and previous release. As ENTSO-E updates the artefacts, the ones under current release will be moved to previous release (and to additional branches) as archived.
-
-Note that for some of the previous version’s folders (e.g., for CGMES v2.4, NCP v2.2), an Enhanced folder exists. Such folders have a version that is updated after the official version release. This happens in cases where (profiling and validation) tooling was updated in the meantime and offers users using an archived, but updated version of the artifacts bug fixes discovered years after their release. 
+This library contains all applications profiles for Common Grid Model Exchange Standard/Specification (CMGES) organised in a folder structure. The application profiles consist of vocabulary schemas (RDFS) and constraints (SHACL) derived from the information model in UML available on the [ENTSO-E CGMES Library](https://www.entsoe.eu/data/cim/cim-for-grid-models-exchange/#_ENTSO_E_CGMES_Extension_and_Profile).
 
 For each release the repository has PROF, RDFS and SHACL packages which contain machine readable artifacts. PROF contains the description of the profiles; RDFS is the RDF schemas and SHACL is the SHACL based constraints. 
 
@@ -13,12 +9,12 @@ Enhanced versions of other previous release folders can be generated under reque
 
 
 ### How to provide feedback
-When importing any data contained in the repository, you might find bugs or issues to report. Please, open a GitHub issue and include your export log when applicable. Additionally, please write an email to [cim@entsoe.eu](cim@entsoe.eu).
+When importing any data contained in the repository, you might find bugs or issues to report. Please, open a GitHub issue and include your export log when applicable. Additionally,if needed, please write an email to [cim@entsoe.eu](cim@entsoe.eu).
 
-Do not forget to read [CONTRIBUTING](https://github.com/entsoe/application-profiles-library/blob/main/.github/CONTRIBUTING.adoc) file.
+Do not forget to read [CONTRIBUTING](https://github.com/entsoe/CGMES-AP/blob/main/.github/CONTRIBUTING.adoc) file.
 
 ### License
-Please, refer to the [LICENSE](https://github.com/entsoe/application-profiles-library/blob/main/LICENSE.txt) for more information on the open-source license collaboration framework of the repository.
+Please, refer to the [LICENSE](https://github.com/entsoe/CGMES-AP/blob/main/LICENSE.txt) for more information on the open-source license collaboration framework of the repository.
 
 ### Accreditations
 List of the people and organisations contributing to this repository.
@@ -28,28 +24,18 @@ List of the people and organisations contributing to this repository.
 
 # Introduction
 
-ENTSO-E agreed to publish all application profiles in one package which has a structure to distinguish CGMES, Network Code Profiles (NCP) and DatasetMetadata related RDFS (vocabulary) and SHACL (constraints) artifacts. Specifically for the NCP and the DatasetMetadata profiles, there is a distinction between the current and past versions. All the material can be found on the CGMES Library under the Application Profiles Library tab.
+ENTSO-E agreed to publish all application profiles in the CGMES package, related RDFS (vocabulary) and SHACL (constraints) artifacts. All the material can be found on the CGMES Library under the Application Profiles Library tab.
 
 The application profiles are provided to facilitate the implementation of the profiles and related constraints as defined in different standards, e.g. IEC 61970-600-1:2021, IEC 61970-600-2:2021, IEC 61970-301 and other related 61970-45x series of profiles. 
 
 Note that the application profile serialization based on RDFS and RDF XML syntax is defined in IEC 61970-501:2006 (Ed1) and CIM XML serialization is defined in IEC 61970-552:2016. However, current implementations deviate from these standards due to various reasons. For additional information, please refer to the latest version of the [RDF-syntax User Guide](https://www.entsoe.eu/data/cim/cim-for-grid-models-exchange/#_ENTSO_E_CGMES_Extension_and_Profile) CGMES Library.
 
-The content of the Application Profiles Library is published under [Apache 2.0 open-source license](https://github.com/entsoe/application-profiles-library/blob/main/LICENSE.txt).
 
 # ENTSO-E GitHub Repository Structure
 
-ENTSO-E offers the [application-profiles-library](https://github.com/entsoe/application-profiles-library/) GitHub Repository storing all the published CIM related artifacts (including CGMES and the NCP).
-
-The main branch stores all the available artifacts and several snapshots in time will constitute the application profiles library releases as such. This branch is continuously under development and ENTSO-E CIM WG so it can be considered the _edge_ or _development_ branch. 
-
-On the other hand, the repository is also subdivided into several branches corresponding to packages of profiles’ sets releases. With this structure, ENTSO-E aims at enhancing transparency and clearly associating a set of machine artifacts to profiles releases.
-
-As an example, someone interested in the NCP v2.2 release artifacts can access them in the main branch but also in the branch _ncp-v2-2_.
+ENTSO-E offers the [CGMES-application-profiles-library](https://github.com/entsoe/CGMES-AP) GitHub Repository storing all the published CIM (CGMES) related artifacts.
 
 This current document establishes in [section 6](# Application Profiles – File Naming Convention) the naming convention used for the artifacts in the application profiles library. However, in order to exploit git functionalities for version control, the artifacts in the main branch may not include the version number in the files’ name. Every time a change is done in a file, it must increase the version number but if one does this, git will not capture the changes as it needs the file name to be static. 
-
-Only once a release is ready for publication, a new branch will be created with the subset of artifacts corresponding to it. 
-As an example, imagine that the current release of the NCP is version 2.4. In the moment of publication, the main branch and the _ncp-v2-4-0_ contain the exact same. One month later, ENTSO-E CIM WG detects a bug in the release’ artifacts (e.g., the _AssessedElement-AP-Voc-RDFS2020.rdf_) and fixes it in the main branch, thus the two previous branches differ. When the next release v2.5 of the NCP is ready, a new branch _ncp-v2-5-0_ will be created and the process restarted.
 
 Regardless of the file naming convention used exclusively for human readability, all artifacts contain version fields in the dataset header (_dcat:isVersionOf_, _dcterms:conformsTo_, etc.) which shall be used for machine readability.
 
@@ -57,15 +43,15 @@ Regardless of the file naming convention used exclusively for human readability,
 
 ### Solving inconsistency in the use of dcterms ontology
 
-All current releases of CGMES ([v3.0](https://github.com/entsoe/application-profiles-library/tree/cgmes-v3-0)) and NCP ([v2.4](https://github.com/entsoe/application-profiles-library/tree/ncp-v2-4-0)) RDFS and SHACL artifacts are updated to replace the term _dct_ with the term _dcterms_. This is done because dct was initially use but later decided not to use. This change enhances consistency.
+All current releases of CGMES, RDFS and SHACL artifacts are updated to replace the term _dct_ with the term _dcterms_. This is done because dct was initially use but later decided not to use. This change enhances consistency.
 
 ### Addition of header schema for CGMES v3.0
 
 For context, CGMES v3.0 profiles have the metadata under owl:Onthology. On the other hand, CGMES v2.4 profiles have the metadata under entsoe:<profile>Version.
 
-A maintenance request detected that [File Header RDFS of CGMES v3.0](https://github.com/entsoe/application-profiles-library/blob/main/CGMES/RDFS/61970-600-2_Header-AP-Voc-RDFS2019.rdf) was missing the metadata. This originated a the addition of a [new File Header RDFS](https://github.com/entsoe/application-profiles-library/blob/main/CGMES/RDFS/61970-600-2_Header-AP-Voc-RDFS2020.rdf) that features a new Ontology file header added to the schema (RDFS).
+A maintenance request detected that [File Header RDFS of CGMES v3.0](https://github.com/entsoe/CGMES-AP/blob/main/CGMES/RDFS/61970-600-2_Header-AP-Voc-RDFS2019.rdf) was missing the metadata. This originated a the addition of a [new File Header RDFS](https://github.com/entsoe/CGMES-AP/blob/main/CGMES/RDFS/61970-600-2_Header-AP-Voc-RDFS2020.rdf) that features a new Ontology file header added to the schema (RDFS).
 
-It is recommended to use the [new File Header RDFS](https://github.com/entsoe/application-profiles-library/blob/main/CGMES/RDFS/61970-600-2_Header-AP-Voc-RDFS2020.rdf) instead of the [old](https://github.com/entsoe/application-profiles-library/blob/main/CGMES/RDFS/61970-600-2_Header-AP-Voc-RDFS2019.rdf).
+It is recommended to use the [new File Header RDFS](https://github.com/entsoe/CGMES-AP/blob/main/CGMES/RDFS/61970-600-2_Header-AP-Voc-RDFS2020.rdf) instead of the [old](https://github.com/entsoe/CGMES-AP/blob/main/CGMES/RDFS/61970-600-2_Header-AP-Voc-RDFS2019.rdf).
 
 
 # RDF schemas (RDFS)
@@ -177,7 +163,7 @@ There are two approaches to resolve which SHACL rules apply to an instance file:
 2. **Via SHACL headers** — load all SHACL files, read each `owl:versionIRI`, and match against the constraint resource URIs declared in the PROF for the profile that the instance conforms to
 
 # Constraints
-SHACL based constraints are provided for CGMES v3.0 and NC Profiles. These are the files which file name contains “Con-SHACL” or “Con-{xys}-SHACL”, where {xys} indicates the main content. For instance, “Con-Simple-SHACL” indicates that the constraints were derived from RDFS and “Con-Complex-NotSolvedMAS-SHACL” indicates that constraints have manually been produced and are applicable for a model that contains Equipment (EQ) and Steady State Hypothesis (SSH) profiles of CGMES.
+SHACL based constraints are provided for CGMES v3.0. These are the files which file name contains “Con-SHACL” or “Con-{xys}-SHACL”, where {xys} indicates the main content. For instance, “Con-Simple-SHACL” indicates that the constraints were derived from RDFS and “Con-Complex-NotSolvedMAS-SHACL” indicates that constraints have manually been produced and are applicable for a model that contains Equipment (EQ) and Steady State Hypothesis (SSH) profiles of CGMES.
 
 Please, note that constraints automatically generated from the schema are denoted as Simple. The constraints needing some manual expert modifications are denoted as Complex. In case these two scenarios are combined, this is indicated not specifying anything (nor Simple, nor Complex). 
 
