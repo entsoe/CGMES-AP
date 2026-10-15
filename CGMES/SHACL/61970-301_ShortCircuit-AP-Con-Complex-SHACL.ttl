@@ -164,11 +164,10 @@ scu:SeriesCompensator.varistorRatedCurrent-usageSparql
     sh:select """
       SELECT  $this ?value
       WHERE {
-        OPTIONAL {$this $PATH ?value }.
+        OPTIONAL {$this $PATH ?value }. 
         $this cim:SeriesCompensator.varistorPresent ?varpresent .
-        FILTER (bound(?value) && ?varpresent=false) .
-      }
-      """ .
+        FILTER (bound(?value) && !?varpresent) .        
+      }""" .       
       
 scu:SeriesCompensator.varistorVoltageThreshold-usage
         a               sh:PropertyShape ;
@@ -188,8 +187,7 @@ scu:SeriesCompensator.varistorVoltageThreshold-usageSparql
     sh:select """
       SELECT  $this ?value
       WHERE {
-        OPTIONAL {$this $PATH ?value }.
+        OPTIONAL {$this $PATH ?value }. 
         $this cim:SeriesCompensator.varistorPresent ?varpresent .
-        FILTER (bound(?value) && ?varpresent=false) .
-      }
-      """ .
+        FILTER (bound(?value) && !?varpresent) .        
+      }""" .        
